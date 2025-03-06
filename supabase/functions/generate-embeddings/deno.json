@@ -1,0 +1,21 @@
+{
+  "compilerOptions": {
+    "allowJs": true,
+    "lib": ["deno.window"],
+    "strict": true
+  },
+  "imports": {
+    "openai": "https://esm.sh/openai@3.2.1",
+    "http/server": "https://deno.land/std@0.168.0/http/server.ts"
+  },
+  "lint": {
+    "files": {
+      "include": ["**/*.ts"]
+    }
+  },
+  "fmt": {
+    "files": {
+      "include": ["**/*.ts"]
+    }
+  }
+}

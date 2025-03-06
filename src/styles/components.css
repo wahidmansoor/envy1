@@ -1,0 +1,164 @@
+@layer components {
+  /* Typography */
+  .header-main { @apply text-3xl font-bold tracking-tight text-gray-900; }
+  .header-section { @apply text-2xl font-bold text-gray-900; }
+  .header-subsection { @apply text-xl font-bold text-gray-900; }
+  .text-body { @apply text-gray-700 leading-relaxed; }
+  .text-description { @apply text-sm text-gray-600; }
+
+  /* Card variations */
+  .card-transparent {
+    @apply backdrop-blur-sm bg-background bg-opacity-40 rounded-xl shadow-lg 
+           border border-gray-200 border-opacity-40 p-6 
+           transition-all duration-300 hover:shadow-xl;
+  }
+
+  .card-solid {
+    @apply bg-background rounded-lg shadow border border-gray-200 p-6 
+           transition-all duration-300 hover:shadow-xl;
+  }
+  
+  /* Base container */
+  .container-base { 
+    @apply space-y-6 md:space-y-8; 
+  }
+
+  /* Button variants */
+  .button-base {
+    @apply px-4 py-2 rounded-md font-medium transition-all duration-200
+           focus:outline-none focus:ring-2 focus:ring-offset-2 
+           disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  .button-primary {
+    @apply button-base bg-primary text-white
+           hover:bg-primary-dark focus:ring-primary-light;
+  }
+
+  .button-secondary {
+    @apply button-base bg-gray-100 text-gray-700
+           hover:bg-gray-200 focus:ring-gray-300;
+  }
+
+  /* Form elements */
+  .input-base {
+    @apply w-full px-3 py-2 rounded-md border border-gray-300 
+           focus:outline-none focus:ring-2 focus:ring-primary 
+           focus:border-primary bg-white text-text;
+  }
+
+  .label-base {
+    @apply block text-sm font-medium text-text-dark mb-1;
+  }
+
+  /* Status indicators */
+  .alert-warning { 
+    @apply border-l-4 border-red-500 shadow-md p-4 bg-red-50 text-red-800; 
+  }
+  
+  .alert-info { 
+    @apply bg-gray-50 p-6 rounded-lg text-gray-800; 
+  }
+  
+  .alert-success { 
+    @apply bg-green-50 border-green-500 text-green-800; 
+  }
+
+  /* Priority levels */
+  .priority-high { @apply bg-red-100 text-red-800; }
+  .priority-medium { @apply bg-yellow-100 text-yellow-800; }
+  .priority-low { @apply bg-green-100 text-green-800; }
+
+  /* Triage states */
+  .triage-urgent { @apply bg-red-50 text-red-600; }
+  .triage-soon { @apply bg-yellow-50 text-yellow-600; }
+  .triage-routine { @apply bg-green-50 text-green-600; }
+
+  /* Text styles */
+  .gradient-text {
+    @apply bg-gradient-to-r from-primary to-accent 
+           bg-clip-text text-transparent;
+  }
+
+  /* Grid layouts */
+  .grid-two-cols { 
+    @apply grid md:grid-cols-2 gap-6; 
+  }
+  .grid-three-cols { 
+    @apply grid lg:grid-cols-3 gap-6; 
+  }
+
+  .status-warning {
+    @apply bg-yellow-50 text-yellow-700;
+  }
+
+  .status-error {
+    @apply bg-red-50 text-red-700;
+  }
+
+  /* Container layouts */
+  .content-container {
+    @apply space-y-6;
+  }
+
+  .flex-center {
+    @apply flex items-center gap-3;
+  }
+
+  .flex-space-between {
+    @apply flex items-center justify-between;
+  }
+  
+  /* Animation effects */
+  .transition-base { 
+    @apply transition-all duration-300; 
+  }
+  .hover-scale { 
+    @apply hover:scale-[1.02]; 
+  }
+  .hover-shadow { 
+    @apply hover:shadow-lg; 
+  }
+
+  /* Interactive states */
+  .hover-lift {
+    @apply transition-transform duration-200 hover:-translate-y-1;
+  }
+
+  /* Animations */
+  .fade-in {
+    @apply opacity-0 animate-[fadeIn_0.6s_ease-out_forwards];
+  }
+
+  /* Tab styles */
+  .tab-button {
+    @apply flex items-center gap-2 whitespace-nowrap py-3 sm:py-4 lg:py-5 px-1 
+           border-b-2 min-w-[120px] justify-center sm:min-w-[140px] 
+           font-medium text-sm sm:text-base outline-none transition-all duration-300
+           focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-primary 
+           touch-manipulation relative border-transparent text-text-light 
+           hover:text-primary hover:border-primary-light 
+           focus-visible:text-accent focus-visible:border-accent
+           after:absolute after:bottom-[-2px] after:left-0 after:w-full after:h-0.5
+           after:transition-all after:duration-200 after:ease-out;
+  }
+
+  .tab-button-selected {
+    @apply border-primary gradient-text font-semibold shadow-sm;
+  }
+
+  .tab-panel {
+    @apply focus:outline-none px-2 sm:px-4 lg:px-6 pt-4 sm:pt-6 min-h-[200px] transition-all duration-300 ease-in-out motion-reduce:transition-none;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

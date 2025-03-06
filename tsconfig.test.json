@@ -1,0 +1,32 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "types": [
+      "node",
+      "jest",
+      "@testing-library/jest-dom"
+    ],
+    "esModuleInterop": true,
+    "jsx": "react-jsx",
+    "module": "commonjs",
+    "target": "es2021",
+    "strict": true,
+    "noImplicitAny": true,
+    "strictNullChecks": true,
+    "strictFunctionTypes": true,
+    "strictBindCallApply": true,
+    "strictPropertyInitialization": true,
+    "noUnusedLocals": true
+  },
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.tsx",
+    "src/tests/**/*.ts",
+    "src/tests/**/*.tsx",
+    "jest.config.js"
+  ],
+  "exclude": [
+    "node_modules",
+    "src/vite-env.d.ts"
+  ]
+}

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document Upload - RAG System</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50">
+    <div class="max-w-2xl mx-auto p-6">
+        <h1 class="text-2xl font-bold mb-6">Document Upload</h1>
+        <form id="uploadForm" class="space-y-4 bg-white p-6 rounded-lg shadow">
+            <div>
+                <label class="block text-sm font-medium text-gray-700">Title</label>
+                <input type="text" id="title" required
+                    class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
+                    placeholder="Enter document title">
+            </div>
+            <div>
+                <label class="block text-sm font-medium text-gray-700">Document</label>
+                <input type="file" id="file" required accept=".txt,.md,.pdf"
+                    class="mt-1 block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-indigo-50 file:text-indigo-700 hover:file:bg-indigo-100">
+            </div>
+            <button type="submit"
+                class="w-full bg-indigo-600 text-white py-2 px-4 rounded-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
+                Upload Document
+            </button>
+        </form>
+        <div id="message" class="mt-4 p-4 rounded-md hidden"></div>
+    </div>
+
+    <script>
+        const form = document.getElementById('uploadForm');
+        const messageDiv = document.getElementById('message');
+
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const formData = new FormData();
+            formData.append('title', document.getElementById('title').value);
+            formData.append('file', document.getElementById('file').files[0]);
+
+            try {
+                const response = await fetch('/api/documents', {
+                    method: 'POST',
+                    body: formData
+                });
+                
+                const result = await response.json();
+                
+                messageDiv.textContent = result.success ? 
+                    'Document uploaded successfully!' : 
+                    `Upload failed: ${result.error}`;
+                messageDiv.className = `mt-4 p-4 rounded-md ${result.success ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700'}`;
+                messageDiv.classList.remove('hidden');
+                
+                if (result.success) {
+                    form.reset();
+                }
+            } catch (error) {
+                messageDiv.textContent = `Error: ${error.message}`;
+                messageDiv.className = 'mt-4 p-4 rounded-md bg-red-100 text-red-700';
+                messageDiv.classList.remove('hidden');
+            }
+        });
+    </script>
+</body>
+</html>

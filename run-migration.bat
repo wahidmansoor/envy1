@@ -1,0 +1,4 @@
+@echo off
+set VITE_SUPABASE_URL=https://pgbqawjatdatnoudfriu.supabase.co
+set VITE_SUPABASE_ANON_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBnYnFhd2phdGRhdG5vdWRmcml1Iiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTczOTM0OTUxOSwiZXhwIjoyMDU0OTI1NTE5fQ.d7io3cmA0Vnw0lnLw6qqyI5aNu-z5Mu_PhO_r8mRwHo
+node run-migration.js
